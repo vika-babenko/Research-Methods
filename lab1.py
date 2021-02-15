@@ -22,9 +22,9 @@ xn3 = []
 # генератор списку
 def generation(generatedList):
     for i in range(8):
-            r = random.randint(1, 20)
-            generatedList.append(r)
-            i += 1
+        r = random.randint(1, 20)
+        generatedList.append(r)
+        i += 1
     return generatedList
 
 # генерація х1, х2, х3
@@ -55,17 +55,16 @@ xn3 = [(x3[i] - x03)/dx3 for i in range(8)]
 
 y_et = counting_of_y(x01, x02, x03)
 
-res = 1
-for i in range(len(y)):
-    res = y[i] + res
+# 233 вар
+result_optional_value = [(y[k] - y_et) ** 2 for k in range(8)]
+optional_value = max(result_optional_value)
 
-y_average = res / 8
-
+# 201 var
 # optional value
-k = 100
-for i in range(len(y)):
-    if y[i] > y_average and y[i] < k:
-        k = y[i]
+# k = 100
+# for i in range(len(y)):
+#    if y[i] > y_average and y[i] < k:
+#       k = y[i]
 
 # output
 print("Кількість дослідів -- ", len(y))
@@ -77,6 +76,7 @@ print("X3 = ", x3)
 print("-------------------------------------------------------")
 print("List of x0: %s %s %s"%(x01, x02, x03))
 print("-------------------------------------------------------")
+print("Y", y)
 print("List of dx: %s %s %s"%(dx1, dx2,dx3))
 print("-------------------------------------------------------")
 print("List of xn:")
@@ -84,6 +84,5 @@ print("Xn1", xn1)
 print("Xn2", xn2)
 print("Xn3", xn3)
 print("-------------------------------------------------------")
-print("Середнє значення у", y_average)
 print("Еталонне значення у :", y_et)
-print("Y <---", k)
+print("max(Y-Yэт)²: ", optional_value)
